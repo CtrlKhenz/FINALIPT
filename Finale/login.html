@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Action | IT 207</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      animation: fadeIn 1.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    .container {
+      animation: slideUp 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    .input-box {
+      opacity: 0;
+      animation: fadeSlide 1s ease-out forwards;
+      visibility: hidden;
+    }
+
+    /* Stagger animation delay for inputs */
+    .input-box:nth-child(1) { animation-delay: 0.3s; }
+    .input-box:nth-child(2) { animation-delay: 0.6s; }
+
+    .button {
+      opacity: 100;
+      animation: bounceIn 1s ease-out forwards;
+      animation-delay: 1s;
+      visibility: visible;
+    }
+
+    .register-link {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      animation-delay: 1.3s;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeSlide {
+      from {
+        transform: translateX(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Ensure buttons and inputs are visible */
+    .input-box input {
+      visibility: visible;
+    }
+
+    .button {
+      visibility: visible !important;
+    }
+
+    .button button {
+      opacity: 1 !important;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Login</div>
+    <div class="content">
+      <!-- Form submission goes to login.php -->
+      <form action="login.php" method="POST">
+        <div class="user-details">
+          <!-- Username input -->
+          <div class="input-box">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          </div>
+
+          <!-- Password input -->
+          <div class="input-box">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+        </div>
+
+        <div class="button">
+          <button type="submit" visi>Login</button>
+        </div>
+      </form>
+
+      <!-- Register redirect button -->
+      <div class="register-link" onclick="transitionToRegister()">
+        <p>Don't have an account? <span>Register here</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function transitionToRegister() {
+      // Apply fade-out animation
+      document.body.style.animation = "fadeOut 1s ease-out forwards";
+      
+      // Wait for animation to complete before redirecting
+      setTimeout(function() {
+        window.location.href = "register.html";
+      }, 1000); // Delay should match the duration of the fadeOut animation
+    }
+  </script>
+
+  <style>
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  </style>
+</body>
+</html>
